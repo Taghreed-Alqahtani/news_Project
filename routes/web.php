@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\ArticlesController;
+use App\Http\Controllers\landingController;
 use Illuminate\Support\Facades\Route;
 use App\Models\article;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,11 +20,12 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //return redirect('/login');
+    return view('auth.login');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('charts');
 })->middleware(['auth'])->name('dashboard');
 
 
@@ -41,3 +44,16 @@ Route::get('articles/{article}/edit', [ArticlesController::class, 'edit'])->midd
 Route::put('articles/{article}', [ArticlesController::class, 'update'])->middleware('auth');
 
 Route::delete('articles/{article}',[ArticlesController::class, 'destroy'])->middleware('auth');
+
+Route::get('landing', [landingController::class, 'index']);
+
+Route::get('/dash', function () {
+    return view('dash');
+})->middleware('auth');
+
+Route::get('/category', function () {
+    return view('category');
+});
+
+
+Route::get('/search', [ArticlesController::class, 'search']);
