@@ -7,10 +7,11 @@ use App\Models\article;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
+use Illuminate\Support\Facades\DB;
+
 
 class ArticlesController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +20,7 @@ class ArticlesController extends Controller
     public function index()
     {
         // $articles = article::all();
-        $articles = article::orderBy('id', 'desc')->get();
+        $articles = article::orderBy('created_at', 'desc')->get();
         //$articles = article::orderBy('id', 'desc')->paginate(1);
         //$articles = article::orderBy('id','desc')->take(10)->get();
         return View('articles.index')->with('articles', $articles);
@@ -142,5 +143,21 @@ class ArticlesController extends Controller
         ->orWhere ('author_name', 'LIKE', '%' . $search_text . '%')
         ->orWhere ('content', 'LIKE', '%' . $search_text . '%')->get ();
         return view('result')->with('results', $results);
+    }
+
+    public function dash()
+    {
+        $data = DB::table('articles')
+       ->select(
+        DB::raw('category as category'),
+        DB::raw('count(*) as number'))
+       ->groupBy('category')
+       ->get();
+     $array[] = ['category', 'Number'];
+     foreach($data as $key => $value)
+     {
+      $array[++$key] = [$value->category, $value->number];
+     }
+     return view('dashboard')->with('category', json_encode($array));
     }
 }

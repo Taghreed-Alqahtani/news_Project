@@ -1,3 +1,20 @@
+<div class="nav-fixed nav-container teal borderYtoX">
+    <a href="/landing">HOME</a>
+    <a href="/allarticles">ALL NEWS</a>
+    <li class="dropdown">
+        <a class="dropbtn">CATEGORY</a>
+        <div class="dropdown-content">
+            @if (count($categorys) > 0)
+                @foreach ($categorys as $category)
+                    <a href="/category/{{ $category->category }}">{{ $category->category }}</a>
+                @endforeach
+            @endif
+        </div>
+    </li>
+    <a href="#">ABOUT</a>
+    <a href="#contact">CONTACT</a>
+</div>
+{{-- 
 <nav id="header" class="w-full z-30 top-0 text-white py-1 lg:py-6 nav-fixed">
     <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-2 lg:py-6">
         <div class="pl-4 flex items-center">
@@ -50,4 +67,4 @@
             </button>
         </div>
     </div>
-</nav>
+</nav> --}}

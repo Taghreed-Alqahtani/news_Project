@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\article;
-use Illuminate\Support\Facades\DB;
+use App\Models\message;
 
-class landingController extends Controller
+class messagesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,23 +14,8 @@ class landingController extends Controller
      */
     public function index()
     {
-        $articles = article::orderBy('created_at', 'desc')->take(10)->get();
-        $categorys = DB::select('SELECT DISTINCT category FROM articles');
-        return View('landingPage.landing', compact('articles'), compact('categorys'));
-    }
-
-    public function category($category)
-    {
-        $articles = article::where('category', 'LIKE', '%' . $category . '%')->get();
-        $categorys = DB::select('SELECT DISTINCT category FROM articles');
-        return View('landingPage.landing', compact('articles'), compact('categorys'));
-    }
-
-    public function allArticles()
-    {
-        $articles = article::orderBy('created_at', 'desc')->get();
-        $categorys = DB::select('SELECT DISTINCT category FROM articles');
-        return View('landingPage.landing', compact('articles'), compact('categorys'));
+        $messages = message::orderBy('created_at', 'desc')->get();
+        return View('dashboardPage.messages')->with('messages', $messages);
     }
 
     /**
@@ -52,7 +36,18 @@ class landingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'email' => 'required',
+            'message' => 'required'
+        ]);
+
+        $message = new message();
+        $message->title = $request->title;
+        $message->email = $request->email;
+        $message->message = $request->message;
+        $message->save();
+        return redirect('/landing');
     }
 
     /**

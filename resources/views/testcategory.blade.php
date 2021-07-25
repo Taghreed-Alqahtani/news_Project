@@ -11,8 +11,11 @@
                     <h3>
                         {{ $article->title }}
                     </h3>
-                    <p>
+                    <p >
                         {{ $article->content }}
+                    </p>
+                    <p >
+                        {{ $article->category }}
                     </p>
                     <p>{{ $article->created_at }}</p>
                 </div>
@@ -22,5 +25,6 @@
             @endforeach
         @endif
     </div>
-    </section>
+</section>
+
 @endsection

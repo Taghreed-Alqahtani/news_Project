@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\landingController;
+use App\Http\Controllers\messagesController;
 use Illuminate\Support\Facades\Route;
 use App\Models\article;
 use Illuminate\View\View;
@@ -24,9 +25,9 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/dashboard', function () {
-    return view('charts');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
 
 require __DIR__.'/auth.php';
@@ -45,15 +46,20 @@ Route::put('articles/{article}', [ArticlesController::class, 'update'])->middlew
 
 Route::delete('articles/{article}',[ArticlesController::class, 'destroy'])->middleware('auth');
 
+
 Route::get('landing', [landingController::class, 'index']);
+Route::get('category/{category}', [landingController::class, 'category']);
+Route::get('allarticles', [landingController::class, 'allArticles']);
+Route::post('message', [messagesController::class, 'store']);
+Route::get('messages', [messagesController::class, 'index'])->middleware('auth');
 
-Route::get('/dash', function () {
-    return view('dash');
-})->middleware('auth');
 
-Route::get('/category', function () {
-    return view('category');
-});
 
+// Route::get('/category', function () {
+//     return view('category');
+// });
 
 Route::get('/search', [ArticlesController::class, 'search']);
+
+
+Route::get('dashboard', [ArticlesController::class, 'dash']);
