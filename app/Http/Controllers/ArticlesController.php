@@ -19,10 +19,7 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        // $articles = article::all();
-        $articles = article::orderBy('created_at', 'desc')->get();
-        //$articles = article::orderBy('id', 'desc')->paginate(1);
-        //$articles = article::orderBy('id','desc')->take(10)->get();
+        $articles = article::orderBy('created_at', 'desc')->paginate(8);
         return View('articles.index')->with('articles', $articles);
     }
 
@@ -134,18 +131,7 @@ class ArticlesController extends Controller
         $article->delete();
         return redirect('/articles');
     }
-
-    public function search()
-    {
-        $search_text = $_GET['query'];
-        $results = article::where('title', 'LIKE', '%' . $search_text . '%')
-        ->orWhere ('category', 'LIKE', '%' . $search_text . '%')
-        ->orWhere ('author_name', 'LIKE', '%' . $search_text . '%')
-        ->orWhere ('content', 'LIKE', '%' . $search_text . '%')->get ();
-        return view('result')->with('results', $results);
-    }
-
-    public function dash()
+    public function dashboard()
     {
         $data = DB::table('articles')
        ->select(

@@ -5,19 +5,110 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Landing page</title>
+    <head>
+        <title>Tuwaiq News</title>
+    </head>
+    <link href="https://unpkg.com/tailwindcss@2.2.4/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" type='text/css' href="{{ asset('css/form.css') }}">
-
     <style>
+        @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,600,600i');
+        @import 'https://fonts.googleapis.com/css?family=Raleway';
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+        html,
+        body {
+            margin: 0;
+            height: 120%;
+            font-family: 'Playfair Display', serif;
+        }
+
+        a {
+            text-decoration: none
+        }
+
+        .header {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            align-content: flex-start;
+            height: 50vw;
+            min-height: 400px;
+            max-height: 550px;
+            min-width: 300px;
+            color: #eee;
+        }
+
+        .header:after {
+            content: "";
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.12) 40%, rgba(0, 0, 0, 1) 100%);
+        }
+
+        .header:before {
+            content: "";
+            width: 100%;
+            height: 200%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            -webkit-backface-visibility: hidden;
+            -webkit-transform: translateZ(0);
+            backface-visibility: hidden;
+            scale(1.0, 1.0);
+            transform: translateZ(0);
+            background: #000000 url(https://images.unsplash.com/photo-1598784124046-64dc7e92357d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80) 50% 0;
+            background-size: 100%;
+            background-attachment: fixed;
+            animation: grow 500s linear 10ms;
+            transition: all 0.4s;
+            z-index: -2
+        }
+
+        .header a {
+            color: #eee
+        }
+
+
+        
+        .info {
+            flex: 0 0 auto;
+            font-size: 30px;
+            font-weight: bolder;
+            width: 50%;
+            width: 100%;
+            padding: 15% 10% 0 10%;
+            text-shadow: 0 2px 3px rgba(0, 0, 0, 0.2)
+        }
+
+        .meta {
+            font-style: italic;
+        }
+
+        @keyframes grow {
+            0% {
+                transform: scale(1) translateY(0px)
+            }
+
+            50% {
+                transform: scale(1.2) translateY(-400px)
+            }
+        }
+
+        .content {
+            padding: 5% 10%;
+            text-align: justify
+        }
+
         @import url("https://rsms.me/inter/inter.css");
 
-        html {
-            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-                Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
-                "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-                "Noto Color Emoji";
-        }
-        .bold{
+        .bold {
             font-weight: bold;
         }
 
@@ -25,7 +116,7 @@
             margin-top: 300px !important;
         }
 
-        
+
 
         .dropbtn {
             padding: 16px;
@@ -55,18 +146,11 @@
         }
 
         .dropdown-content a:hover {
-            background-color: rgba(85, 89, 92, 0.3);
+            background-color: rgba(75, 77, 78, 0.3);
         }
 
         .dropdown:hover .dropdown-content {
             display: block;
-        }
-        
-        @import 'https://fonts.googleapis.com/css?family=Raleway';
-
-        html,
-        body {
-            margin: 0px;
         }
 
         div.borderYtoX a:before,
@@ -98,11 +182,12 @@
         }
 
         .teal {
-            background: #8f8f8f;
+            background: rgb(0, 0, 0, 0.70);
+            width: -webkit-fill-available;
         }
 
         div.nav-container {
-            font-family: Raleway;
+            font-family: 'Playfair Display', serif;
             margin: 0;
             padding: 2em 3em;
             text-align: center;
@@ -112,308 +197,73 @@
         div.nav-container a {
             color: #FFF;
             text-decoration: none;
-            font: 20px Raleway;
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
             margin: 0px 10px;
             padding: 10px 10px;
             position: relative;
             z-index: 0;
             cursor: pointer;
         }
-        .news-section{
+
+        .news-section {
             padding-top: 80px;
         }
-        /* here */
+
         a:hover {
-  text-decoration: underline;
-}
+            text-decoration: underline;
+        }
 
-/* Hero Unit ----------------------*/
-.hero-unit {
-  height: 640px;
-  background: url(https://static.pexels.com/photos/2884/building-vintage-bike-monument.jpg) no-repeat center center;
-  background-size: cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-}
-.hero-unit h1,
-.hero-unit h2,
-.hero-unit h3,
-.hero-unit h4,
-.hero-unit h5,
-.hero-unit h6 {
-  margin-top: -0.5rem;
-  margin-bottom: 0;
-  color: white;
-}
-.hero-unit h1 {
-  font-weight: bold;
-}
-.hero-unit hgroup {
-  margin: 3rem 0;
-}
-.hero-unit .card-icon { /* front of card */
-  display: block;
-  margin: 0.5rem auto 0;
-  font-size: 2rem;
-  color: white;
-}
-.hero-unit .clients {
-  margin: 2rem auto;
-}
-.hero-unit .clients a {
-  color: white;
-}
-.clients .fa-stack-2x {
-  color: gray;
-}
-.clients:hover .fa-stack-2x {
-  color: #333333;
-}
+        .wid-hei {
+            width: 500px;
+            height: 260px;
+        }
 
-/* Card design - front */
-.button.large {
-  margin: 0;
-  padding: 3.25rem;
-}
-.button.large a {
-  color: white;
-  font-size: 1.75rem;
-  font-weight: 100;
-  margin-top: 2rem;
-}
+        .new_img {
+            height: 260px;
+            widows: 260px;
+        }
 
-/* Card design - back */
-.panel i {
-  font-size: 2rem;
-  display: block;
-  float: left;
-  width: 20%;
-  opacity: 0.5;
-}
-.panel a, 
-.panel p, 
-.panel small {
-  width: 80%;
-  float: right;
-}
-.panel a {
-  margin-bottom: 0.5rem;
-}
-.panel a:hover {
-  text-decoration: underline;
-}
-.panel small {
-  margin-top: -0.5rem;
-  font-style: italic;
-}
+        .news_div {
+            margin: 20px;
+        }
+        
 
-/* Buttons Card Flipper 
- * Source: https://cssdeck.com/labs/rxcleo5w
- */
-.flip-cards {
-  float: left;
-  width: 100%;
-  height: 100%;
-  padding-left: 1rem;
-}
+        .search {
+            justify-content: center;
+            width: 100%;
+            position: relative;
+            display: flex;
+            margin-bottom: 100px;
+        }
 
-.flip-cards li {
-  float: left;
-  width: 33.3%;
-  height: 180px;
-  position: relative;
-  padding: 0;
-}
+        .searchTerm {
+            width: 70%;
+            border: 3px solid rgb(0, 0, 0);
+            border-right: none;
+            padding: 5px;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+            color: #rgb(0, 0, 0);
+        }
 
-.flip-cards li:hover {
-  cursor: pointer;
-}
+        .searchTerm:focus {
+            color: rgb(0, 0, 0);
+        }
 
-.flip-cards li:hover .card-front {
-  -webkit-transform: rotateY(180deg);
-  -moz-transform: rotateY(180deg);
-  -ms-transform: rotateY(180deg);
-  -o-transform: rotateY(180deg);
-  transform: rotateY(180deg);
-  -webkit-transform: perspective(1000) rotateY(180deg);
-  -moz-transform: perspective(1000) rotateY(180deg);
-  -ms-transform: perspective(1000) rotateY(180deg);
-  -o-transform: perspective(1000) rotateY(180deg);
-  transform: perspective(1000) rotateY(180deg);
-}
+        .searchButton {
+            padding:10px; 
+            border: 1px solid rgb(0, 0, 0);
+            background: rgb(0, 0, 0);
+            text-align: center;
+            color: #fff;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        .myTitle{
+            color: #511c00;
+        }
 
-.flip-cards li:hover .card-back {
-  z-index: 950;
-  -webkit-transform: rotateY(0deg);
-  -moz-transform: rotateY(0deg);
-  -ms-transform: rotateY(0deg);
-  -o-transform: rotateY(0deg);
-  transform: rotateY(0deg);
-  -webkit-transform: perspective(1000) rotateY(0deg);
-  -moz-transform: perspective(1000) rotateY(0deg);
-  -ms-transform: perspective(1000) rotateY(0deg);
-  -o-transform: perspective(1000) rotateY(0deg);
-  transform: perspective(1000) rotateY(0deg);
-}
-
-.flip-cards .card-front,
-.flip-cards .card-back {
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  -ms-backface-visibility: hidden;
-  -o-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-transition: -webkit-transform 0.6s;
-  -moz-transition: -moz-transform 0.6s;
-  -o-transition: -o-transform 0.6s;
-  transition: transform 0.6s;
-  display: block;
-  height: 100%;
-  position: absolute;
-  width: 100%;
-}
-
-.flip-cards .card-front {
-  -webkit-transform: perspective(1000) rotateY(0);
-  -moz-transform: perspective(1000) rotateY(0);
-  -ms-transform: perspective(1000) rotateY(0);
-  -o-transform: perspective(1000) rotateY(0);
-  transform: perspective(1000) rotateY(0);
-  z-index: 900;
-}
-
-.flip-cards .card-back {
-  -webkit-transform: rotateY(-180deg);
-  -moz-transform: rotateY(-180deg);
-  -ms-transform: rotateY(-180deg);
-  -o-transform: rotateY(-180deg);
-  transform: rotateY(-180deg);
-  z-index: 800;
-}
-
-/* Button Card Colors */
-.flip-cards .panel {
-  border: none;
-}
-
-.flip-cards .panel i,
-.flip-cards .panel p,
-.flip-cards .panel a,
-.flip-cards .panel small {
-  color: white;
-}
-
-/* First button color */
-.flip-cards li:first-child > .button {
-  background-color: rgba(40, 57, 77, 0.8);
-}
-.flip-cards li:first-child > .panel {
-  background-color: rgba(40, 57, 77, 1);
-}
-
-/* Second button color */
-.flip-cards li:nth-child(2) > .button {
-  background-color: rgba(109, 193, 202, 0.8);
-}
-.flip-cards li:nth-child(2) > .panel {
-  background-color: rgba(109, 193, 202, 1);
-}
-
-/* Third button color */
-.flip-cards li:nth-child(3) > .button {
-  background-color: rgba(211, 81, 45, 0.8);
-}
-.flip-cards li:nth-child(3) > .panel {
-  background-color: rgba(211, 81, 45, 1);
-}
-
-/* Fourth button color */
-.flip-cards li:nth-child(4) > .button {
-  background-color: rgba(235, 167, 36, 0.8);
-}
-.flip-cards li:nth-child(4) > .panel {
-  background-color: rgba(235, 167, 36, 1);
-}
-
-/* Fifth button color */
-.flip-cards li:nth-child(5) > .button {
-  background-color: rgba(75, 135, 150, 0.8);
-}
-.flip-cards li:nth-child(5) > .panel {
-  background-color: rgba(75, 135, 150, 1);
-}
-
-/* Sixth (last) button color */
-.flip-cards li:last-child > .button {
-  background-color: rgba(100, 66, 87, 0.8);
-}
-.flip-cards li:last-child > .panel {
-  background-color: rgba(100, 66, 87, 1);
-  color: white;
-}
-
-/*
- * RESPONSIVENESS -------------------------------------------------
- */
-@media only screen and ( max-width: 40em ) {
-	.hero-unit {
-		height: 800px;
-	}
-	.flip-cards li {
-		width: 50%;
-		/*height: 160px;*/
-	}
-}
-@media only screen and ( max-width: 30em ) {
-	.hero-unit h1 {
-		font-size: 1.75rem;
-	}
-	.hero-unit h3 {
-		font-size: 1.125rem;
-	}
-}
-@media only screen and ( max-width: 25em ) {
-	.hero-unit {
-		height: 920px;
-	}
-	.hero-unit hgroup {
-		margin: 2rem 0;
-	}
-	.hero-unit h1 {
-		font-size: 1.35rem;
-		padding-bottom: 0.25rem;
-	}
-	.hero-unit h3 {
-		font-size: 0.85rem;
-	}
-	.hero-unit .card-icon {
-		font-size: 1.35rem;
-	}
-	.hero-unit .card-back .card-icon {
-		font-size: 2rem;
-		margin: 0;
-		padding: 5px 0 20px 5px;
-	}
-	.flip-cards li {
-		width: 100%;
-		font-size: 1.35rem;
-		height: 120px;
-	}
-	.flip-cards .panel p {
-		display: none;	
-	}
-	.flip-cards .panel small {
-		margin: 0;
-	}
-	.button.large {
-		padding: 2rem;
-	}
-	.button.large a {
-		font-size: 1.35rem;
-	}
-}
-
-    
     </style>
 </head>

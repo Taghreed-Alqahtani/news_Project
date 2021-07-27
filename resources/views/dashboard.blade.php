@@ -2,7 +2,6 @@
 @section('content')
     <head>
         <meta charset=utf-8 />
-        <title>Morris.js Area Chart</title>
         <style>
             @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
@@ -68,9 +67,9 @@
     <body>
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
         <main>
-            <h5>number of categories</h5>
+            <h5>number of articles per category</h5>
             <div id="bar-chart"></div>
-            <h5>percent of categories</h5>
+            <h5>percent of articles</h5>
             <div id="pie-chart"></div>
         </main>
         <script>
@@ -104,7 +103,7 @@
                     },
                     vAxis: {
                         minValue: 0,
-                        maxValue: 50,
+                        maxValue: 30,
                         baselineColor: '#DDD',
                         gridlines: {
                             color: '#DDD',

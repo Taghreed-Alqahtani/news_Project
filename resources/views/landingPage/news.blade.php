@@ -1,8 +1,6 @@
-@extends('landingPage.layout')
-
-@include('landingPage.about')
-
-@section('content')
+@include('landingPage.header')
+@include('landingPage.nav')
+<section class="content">
     <section class="content">
         <form action="/search" type="get" role="search">
             <div class="search_wrap">
@@ -23,15 +21,15 @@
                     <div class="grid grid-cols-12 md:items-center w-full max-w-screen-sm md:max-w-screen-md mx-auto px-4">
                         <div
                             class="col-span-12 md:col-span-auto md:col-start-1 md:col-end-9 md:row-start-1 md:row-end-1 bg-red-500">
-                            <a href="/article/{{ $article->id }}" title="Image Link">
+                            <a class="" href="/article/{{ $article->id }}" title="Image Link">
                                 <picture class="relative block w-full h-0 pb bg-gray-300 overflow-hidden shadow-lg"
                                     style="padding-top: 75%;">
                                     @if ($article->image === 'noimage.jpg')
-                                        <img class="absolute inset-0 w-full h-full object-cover"
-                                            src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80'>
+                                    <img class="absolute inset-0 w-full h-full object-cover"
+                                    src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80' >
                                     @else
-                                        <img class="absolute inset-0 w-full h-full object-cover"
-                                            src='/storage/images/{{ $article->image }}'>
+                                    <img class="absolute inset-0 w-full h-full object-cover"
+                                    src='/storage/images/{{ $article->image }}' >
                                     @endif
                                 </picture>
                             </a>
@@ -57,6 +55,8 @@
                     </div>
                 </div>
             @endforeach
+            {{$articles->links()}}
         @endif
     </section>
-@endsection
+</section>
+@include('landingPage.contact')

@@ -22,81 +22,33 @@ class landingController extends Controller
 
     public function category($category)
     {
-        $articles = article::where('category', 'LIKE', '%' . $category . '%')->get();
+        $articles = article::where('category', 'LIKE', '%' . $category . '%')->paginate(8);
         $categorys = DB::select('SELECT DISTINCT category FROM articles');
-        return View('landingPage.landing', compact('articles'), compact('categorys'));
+        return View('landingPage.news', compact('articles'), compact('categorys'));
     }
 
     public function allArticles()
     {
-        $articles = article::orderBy('created_at', 'desc')->get();
+        $articles = article::orderBy('created_at', 'desc')->paginate(8);
         $categorys = DB::select('SELECT DISTINCT category FROM articles');
-        return View('landingPage.landing', compact('articles'), compact('categorys'));
+        return View('landingPage.news', compact('articles'), compact('categorys'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function search()
     {
-        //
+        $categorys = DB::select('SELECT DISTINCT category FROM articles');
+        $search_text = $_GET['query'];
+        $articles = article::where('title', 'LIKE', '%' . $search_text . '%')
+            ->orWhere('category', 'LIKE', '%' . $search_text . '%')
+            ->orWhere('author_name', 'LIKE', '%' . $search_text . '%')
+            ->orWhere('content', 'LIKE', '%' . $search_text . '%')->paginate(30);
+        return view('landingPage.news', compact('articles'), compact('categorys'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show(Article $article)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $categorys = DB::select('SELECT DISTINCT category FROM articles');
+        return View('landingPage.show', compact('article'), compact('categorys'));
     }
 }

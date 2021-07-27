@@ -21,16 +21,12 @@ use Illuminate\Support\Facades\Redirect;
 */
 
 Route::get('/', function () {
-    //return redirect('/login');
     return view('auth.login');
 });
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
-
-
 require __DIR__.'/auth.php';
+
+Route::get('/dashboard', [ArticlesController::class, 'dashboard'])->middleware('auth');
 
 Route::get('articles', [ArticlesController::class, 'index'])->middleware('auth');
 
@@ -46,20 +42,17 @@ Route::put('articles/{article}', [ArticlesController::class, 'update'])->middlew
 
 Route::delete('articles/{article}',[ArticlesController::class, 'destroy'])->middleware('auth');
 
-
-Route::get('landing', [landingController::class, 'index']);
-Route::get('category/{category}', [landingController::class, 'category']);
-Route::get('allarticles', [landingController::class, 'allArticles']);
-Route::post('message', [messagesController::class, 'store']);
 Route::get('messages', [messagesController::class, 'index'])->middleware('auth');
 
+Route::get('landing', [landingController::class, 'index']);
 
+Route::get('category/{category}', [landingController::class, 'category']);
 
-// Route::get('/category', function () {
-//     return view('category');
-// });
+Route::get('allnews', [landingController::class, 'allArticles']);
 
-Route::get('/search', [ArticlesController::class, 'search']);
+Route::post('message', [messagesController::class, 'store']);
 
+Route::get('article/{article}', [landingController::class, 'show']);
 
-Route::get('dashboard', [ArticlesController::class, 'dash']);
+Route::get('/search', [landingController::class, 'search']);
+

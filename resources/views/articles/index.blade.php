@@ -45,14 +45,14 @@
                     <div class="description">
                         <h1>{{ $article->title }}</h1>
                         <h2>written by {{ $article->author_name }}</h2>
-                        <p> {!! $article->content !!}.</p>
+                        <p style="height:133px; overflow: hidden;"> {!! $article->content !!}.</p>
                         <p class="read-more">
                             <small>{{ $article->created_at }}</small>
                         </p>
                     </div>
                 </div>
             @endforeach
-            {{-- {{$articles->links()}} --}}
+            {{$articles->links()}}
         @endif
 
     </body>
