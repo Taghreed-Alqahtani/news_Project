@@ -80,7 +80,7 @@ class ArticlesController extends Controller
      */
     public function show(Article $article)
     {
-        return view('articles.show')->with('article', $article);
+        return view('articles.show')->with('article', $article)->with('comments',$article->comments);
     }
 
     /**
@@ -126,7 +126,7 @@ class ArticlesController extends Controller
     public function destroy(Article $article)
     {
         if ($article == null) {
-            // retrurn not found
+            return back();
         }
         $article->delete();
         return redirect('/articles');

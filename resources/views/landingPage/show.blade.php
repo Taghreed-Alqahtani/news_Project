@@ -24,8 +24,8 @@
             <p class="text-gray-700" style="font-size:xx-large; white-space: break-spaces; overflow: hidden;">
                 {{ $article->content }}
             </p>
-
         </div>
     @endif
 </section>
+@include('landingPage.comments')
 @include('landingPage.contact')

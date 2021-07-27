@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\landingController;
 use App\Http\Controllers\messagesController;
+use App\Http\Controllers\commentsController;
 use Illuminate\Support\Facades\Route;
 use App\Models\article;
 use Illuminate\View\View;
@@ -56,3 +57,14 @@ Route::get('article/{article}', [landingController::class, 'show']);
 
 Route::get('/search', [landingController::class, 'search']);
 
+Route::get('comments', [commentsController::class, 'index'])->middleware('auth');
+
+Route::post('comment', [commentsController::class, 'store']);
+
+Route::delete('comment/{comment}',[commentsController::class, 'destroy']);
+
+Route::put('editcomment/{comment}', [commentsController::class, 'update']);
+
+Route::get('comment/{comment}/edit', [commentsController::class, 'edit']);
+
+Route::put('comment/{comment}', [commentsController::class, 'approve']);

@@ -1,17 +1,19 @@
-<div style="text-align:center">
-<img src='public/image/LogoMakr-1DgoPP.png'/></div>
-  
-  
-----
 # (App_Name) | اسم التطبيق
 
   _Tuwaiq News_
-
 
 ## المقدمــة | Introduction 
   
 _News web application with news of all over the world ._
 
+
+## Demo
+
+- dashboard 
+![Farmers Market Finder Demo](public/image/dashboard.gif)
+
+- landing Page
+![Farmers Market Finder Demo](public/image/landingPage.gif)
 
 
 ## Requirement

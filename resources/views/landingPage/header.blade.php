@@ -10,6 +10,7 @@
     </head>
     <link href="https://unpkg.com/tailwindcss@2.2.4/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" type='text/css' href="{{ asset('css/form.css') }}">
+    <link rel="stylesheet" type='text/css' href="{{ asset('css/comments.css') }}">
     <style>
         @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,600,600i');
         @import 'https://fonts.googleapis.com/css?family=Raleway';
@@ -38,6 +39,8 @@
             max-height: 550px;
             min-width: 300px;
             color: #eee;
+            background-size: cover;
+            background-image: url(https://images.unsplash.com/photo-1598784124046-64dc7e92357d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80);
         }
 
         .header:after {
@@ -51,7 +54,7 @@
             background: linear-gradient(to bottom, rgba(0, 0, 0, 0.12) 40%, rgba(0, 0, 0, 1) 100%);
         }
 
-        .header:before {
+        /* .header:before {
             content: "";
             width: 100%;
             height: 200%;
@@ -62,17 +65,20 @@
             -webkit-transform: translateZ(0);
             backface-visibility: hidden;
             scale(1.0, 1.0);
-            transform: translateZ(0);
+            transform: translateZ(0);   
             background: #000000 url(https://images.unsplash.com/photo-1598784124046-64dc7e92357d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80) 50% 0;
             background-size: 100%;
             background-attachment: fixed;
             animation: grow 500s linear 10ms;
             transition: all 0.4s;
             z-index: -2
-        }
+        } */
 
-        .header a {
+        /* .header a {
             color: #eee
+        } */
+
+        .header{
         }
 
 
@@ -263,6 +269,10 @@
         }
         .myTitle{
             color: #511c00;
+        }
+
+        .search_wrap{
+            margin-top: 60px;
         }
 
     </style>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\article;
 use Illuminate\Support\Facades\DB;
+use App\Models\comment;
 
 class landingController extends Controller
 {
@@ -49,6 +50,8 @@ class landingController extends Controller
     public function show(Article $article)
     {
         $categorys = DB::select('SELECT DISTINCT category FROM articles');
-        return View('landingPage.show', compact('article'), compact('categorys'));
+        //$comments = comment::where('approved', 'LIKE', '%' . '1' . '%')->get();
+        //$comments =$article->comments;
+        return View('landingPage.show', compact('article'), compact('categorys'))->with('comments',$article->comments);
     }
 }

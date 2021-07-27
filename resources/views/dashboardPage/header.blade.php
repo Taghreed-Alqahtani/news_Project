@@ -15,6 +15,8 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type='text/css' href="{{ asset('css/cards.css') }}">
     <link rel="stylesheet" type='text/css' href="{{ asset('css/form.css') }}">
+    <link rel="stylesheet" type='text/css' href="{{ asset('css/comments.css') }}">
+
     <style>
       .hover-text:hover{
         color:gray;

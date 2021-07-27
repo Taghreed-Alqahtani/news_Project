@@ -10,35 +10,34 @@
             id="example-collapse-sidebar">
             <ul class="md:flex-col md:min-w-full flex flex-col list-none">
                 <li class="items-center">
-                    <a class=" hover-text text-xs uppercase py-3 font-bold block" id="link"
-                        href="/dashboard"><i class="fas fa-tv opacity-75 mr-2 text-sm"></i>
+                    <a class=" hover-text text-xs uppercase py-3 font-bold block" id="link" href="/dashboard"><i
+                            class="fas fa-tv opacity-75 mr-2 text-sm"></i>
                         Dashboard</a>
                 </li>
 
                 <li class="items-center">
-                    <a class=" hover-text text-xs uppercase py-3 font-bold block"
-                        href="/landing"><i class="fas fa-newspaper opacity-75 mr-2 text-sm"></i>
+                    <a class=" hover-text text-xs uppercase py-3 font-bold block" href="/landing"><i
+                            class="fas fa-newspaper opacity-75 mr-2 text-sm"></i>
                         Landing Page</a>
+                </li>
+                <li class="items-center">
+                    <a class=" hover-text text-xs uppercase py-3 font-bold block" href="/articles"><i
+                        class="fas fa-clipboard-list opacity-75 mr-2 text-sm"></i></i>Articles</a>
+                </li>
+                <li class="items-center">
+                    <a class=" hover-text text-xs uppercase py-3 font-bold block" href="/articles/create"><i
+                        class="fas fa-tools opacity-75 mr-2 text-sm"></i>
+                        Add Article</a>
                 </li>
 
                 <li class="items-center">
-                    <a class=" hover-text text-xs uppercase py-3 font-bold block"
-                        href="/articles/create"><i class="fas fa-clipboard-list opacity-75 mr-2 text-sm"></i>
-                        Add Article</a>
+                    <a class=" hover-text text-xs uppercase py-3 font-bold block" href="/messages"><i
+                            class="fas fa-envelope opacity-75 mr-2 text-sm"></i>messages</a>
                 </li>
-                <li class="items-center">
-                    <a class=" hover-text text-xs uppercase py-3 font-bold block"
-                        href="/articles"><i class="fas fa-tools opacity-75 mr-2 text-sm"></i>Articles</a>
-                </li>
-                <li class="items-center">
-                    <a class=" hover-text text-xs uppercase py-3 font-bold block"
-                        href="/messages"><i class="fas fa-envelope opacity-75 mr-2 text-sm"></i>messages</a>
-                </li>                
                 <li>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <a class=" hover-text text-xs uppercase py-3 font-bold block"
-                            href="route('logout')" onclick="event.preventDefault();
+                        <a class=" hover-text text-xs uppercase py-3 font-bold block" href="route('logout')" onclick="event.preventDefault();
                                             this.closest('form').submit();">
                             <i class="fas fa-user-circle opacity-75 mr-2 text-sm">
                             </i>{{ __('Log Out') }}
